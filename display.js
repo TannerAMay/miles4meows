@@ -4,6 +4,7 @@ import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 import topFrame from './assets/frame-tp.png';
 import bottomFrame from './assets/frameInverted-tp.png';
 import CatImage from './CatImage';
+import StepData from './StepData';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -19,6 +20,9 @@ class Frames extends React.Component {
 		  <Image source={topFrame} style={styles.topFrame} />
 		  <Image source={bottomFrame} style={styles.bottomFrame} />
 		  <StatusBar style="auto" />
+	    </View>
+		<View style={styles.textPositioning}>
+		  <StepData style={styles.textPositioning}/>
 	    </View>
       </View>
 	);
@@ -64,6 +68,13 @@ const styles = StyleSheet.create({
 	resizeMode: 'contain',
 	marginTop: height * 0.07,
 	marginLeft: width * 0.005,
+  },
+  textPositioning: {
+	position: 'absolute',
+	top: height * 0.62,
+	bottom: 0,
+	left: width * 0.15,
+	right: 0,
   }
 });
 
