@@ -55,21 +55,26 @@ const settings = [
     maxValue: 40000.0,
   },
 ];
-
-const state = {
-    ...settings,
-    hue: 6.3,
-    blur: 0,
-    sepia: 0,
-    sharpen: 0,
-    negative: 0,
-    contrast: 1,
-    saturation: 1,
-    brightness: 1,
-    temperature: 6500,
-  };
  
 class CatImage extends React.Component {
+
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      ...settings,
+      hue: 3.3,
+      blur: 1.3,
+      sepia: 0,
+      sharpen: 0,
+      negative: 1.0,
+      contrast: 1,
+      saturation: 1,
+      brightness: 1,
+      temperature: 6500,
+    };
+  }
+
   render() {
     return (
         <Content style={styles.content} showsVerticalScrollIndicator={false}>
