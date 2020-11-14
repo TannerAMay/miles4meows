@@ -6,7 +6,7 @@ import logo from './assets/logo.png';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Image source={{uri: 'https://thiscatdoesnotexist.com/'}} style={{ width: 305, height: 159 }} /> 
+      <Image source={{uri: 'https://thiscatdoesnotexist.com/'}} style={styles.cat_image} /> 
       <Text style={{color: '#888', fontSize: 30}}>
           Hello World!
         </Text>
@@ -22,4 +22,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  cat_image: {
+    width: 305,
+    height: 159
+  }
 });
