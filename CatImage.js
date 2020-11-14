@@ -9,7 +9,7 @@ const width = Dimensions.get('window').width;
 
 class CatImage extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       catOpacity: 1
@@ -24,22 +24,22 @@ class CatImage extends React.Component {
 
   render() {
     return (
-        <Content style={styles.content} showsVerticalScrollIndicator={false}>
-          <ImageBackground source={ Tomb } style={styles.tombstone}>
-            <View style={{opacity: this.state.catOpacity}}>
-              <Surface style={styles.modifiedCat} ref={ref => (this.image = ref)}>
-                <FilteredImage/>
-              </Surface>
-            </View>
-          </ImageBackground>
-          <Button
-            rounded={false}
-            style={styles.button}
-            block
-            onPress={this.updateOpacity}>
-            <Text>Change Opacity</Text>
-          </Button>
-        </Content>
+      <Content style={styles.content} showsVerticalScrollIndicator={false}>
+        <ImageBackground source={Tomb} style={styles.tombstone}>
+          <View style={{ opacity: this.state.catOpacity }}>
+            <Surface style={styles.modifiedCat} ref={ref => (this.image = ref)}>
+              <FilteredImage />
+            </Surface>
+          </View>
+        </ImageBackground>
+        <Button
+          rounded={false}
+          style={styles.button}
+          block
+          onPress={this.updateOpacity}>
+          <Text>Change Opacity</Text>
+        </Button>
+      </Content>
     );
   }
 }
