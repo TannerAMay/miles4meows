@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 	position: 'absolute',
 	top: height * 0.62,
 	bottom: 0,
-	left: width * 0.1,
+	left: width * 0.2,
 	right: 0,
   }
 });
