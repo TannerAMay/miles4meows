@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import logo from './assets/logo.png'; 
 import CatImage from './CatImage';
 
 export default function App() {
@@ -23,8 +22,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cat_image: {
-    width: 305,
-    height: 159
-  }
 });
