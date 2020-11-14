@@ -8,7 +8,7 @@ export default class StepData extends React.Component {
 
     state = {
         isPedometerAvailable: 'checking',
-        pastStepCount: 0,
+        pastStepCount: 6000,  // default for dev
         currentStepCount: 0,
         batteryLevel: 0,
     }
@@ -60,7 +60,7 @@ export default class StepData extends React.Component {
             error => {
                 this.setState({
                     // pastStepCount: 'Could not get stepCount: ' + error,
-                    pastStepCount: 3000,
+                    pastStepCount: 6000,  // for testing on Android during dev
                 });
             }
         );
