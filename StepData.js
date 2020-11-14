@@ -75,7 +75,7 @@ export default class StepData extends React.Component {
         return (
             <View>
                 <Text style={textStyles.baseText}>{"Steps: " + this.state.pastStepCount.toString() + ' / 6000\n\n'}</Text>
-                <Text style={textStyles.baseText}>{"Health: " + floatToInt(this.state.batteryLevel["_W"] * 100) / 100 + ' / 1'}</Text>
+                <Text style={textStyles.baseText}>{"Health: " + Math.round(this.state.batteryLevel["_W"] * 100) + ' / 100'}</Text>
             </View >
         )
     }
