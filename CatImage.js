@@ -1,9 +1,10 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet, ImageBackground } from 'react-native';
 import React from 'react';
 import { Content } from 'native-base';
 import { Surface } from 'gl-react-expo';
 import ImageFilters from 'react-native-gl-image-filters';
 import Filter from './Filter';
+import Tomb from './assets/tombstone.jpg'
 
 const width = Dimensions.get('window').width;
 
@@ -55,7 +56,7 @@ const settings = [
     maxValue: 40000.0,
   },
 ];
- 
+
 class CatImage extends React.Component {
 
   constructor (props) {
@@ -63,11 +64,11 @@ class CatImage extends React.Component {
 
     this.state = {
       ...settings,
-      hue: 3.3,
-      blur: 1.3,
+      hue: 0,
+      blur: 0,
       sepia: 0,
       sharpen: 0,
-      negative: 1.0,
+      negative: 0,
       contrast: 1,
       saturation: 1,
       brightness: 1,
@@ -78,11 +79,13 @@ class CatImage extends React.Component {
   render() {
     return (
         <Content style={styles.content} showsVerticalScrollIndicator={false}>
-          <Surface style={{ width, height: width }} ref={ref => (this.image = ref)}>
-            <ImageFilters {...this.state} width={width} height={width}>
-              {{ uri: 'https://thiscatdoesnotexist.com' }}
-            </ImageFilters>
-          </Surface>
+          <ImageBackground source={ Tomb } style={styles.tombstone}>
+            <Surface style={styles.modifiedCat} ref={ref => (this.image = ref)}>
+              <ImageFilters {...this.state} width={width} height={width}>
+                {{ uri: 'https://thiscatdoesnotexist.com' }}
+              </ImageFilters>
+            </Surface>
+          </ImageBackground>
           {settings.map(filter => (
             <Filter
               key={filter.name}
@@ -93,7 +96,6 @@ class CatImage extends React.Component {
             />
           ))}
         </Content>
-          
     );
   }
 }
@@ -101,6 +103,20 @@ class CatImage extends React.Component {
 const styles = StyleSheet.create({
   content: { marginTop: 20, marginHorizontal: 20 },
   button: { marginVertical: 20, borderRadius: 0 },
+  tombstone: {
+    flex: 1,
+    justifyContent: 'center',
+    resizeMode: 'cover',
+    opacity: 0.5  // Change opacity for tombstone image
+  },
+  modifiedCat: {
+    flex: 1,
+    justifyContent: 'center',
+    resizeMode: 'cover',
+    width: width,
+    height: width,
+    opacity: 0.8  // Change opacity for cat image
+  }
 });
 
 export default CatImage;
