@@ -28,7 +28,7 @@ class CatImage extends React.Component {
           <ImageBackground source={ Tomb } style={styles.tombstone}>
             <View style={{opacity: this.state.catOpacity}}>
               <Surface style={styles.modifiedCat} ref={ref => (this.image = ref)}>
-                <FilteredImage/>
+                <FilteredImage blur="2"/>
               </Surface>
             </View>
           </ImageBackground>

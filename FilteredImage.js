@@ -61,7 +61,7 @@ class FilteredImage extends React.Component {
     this.state = {
       ...settings,
       hue: 0,
-      blur: 0,
+      blur: this.props.blur,
       sepia: 0,
       sharpen: 0,
       negative: 0,
