@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pedometer } from 'expo-sensors';
-import { Text, View } from 'react-native';
+import * as Battery from 'expo-battery';
+import { Text, TouchableHighlightBase, View } from 'react-native';
 import CatImage from './CatImage';
 
 export default class StepData extends React.Component {
@@ -9,6 +10,7 @@ export default class StepData extends React.Component {
         isPedometerAvailable: 'checking',
         pastStepCount: 0,
         currentStepCount: 0,
+        batteryLevel: 0,
     }
 
     componentDidMount() {
@@ -20,12 +22,18 @@ export default class StepData extends React.Component {
     }
 
     _subscribe = () => {
-        this._subscription = Pedometer.watchStepCount(result => {
-            this.setState({
-                currentStepCount: result.steps,
-            })
-        });
+        // Getting battery info
+        const batteryLevel = Battery.getBatteryLevelAsync();
+        this.setState({ batteryLevel });
 
+        // Dont think we need this
+        // this._subscription = Pedometer.watchStepCount(result => {
+        //     this.setState({
+        //         currentStepCount: result.steps,
+        //     })
+        // });
+
+        // If available, we can do things
         Pedometer.isAvailableAsync().then(
             result => {
                 this.setState({
@@ -62,12 +70,12 @@ export default class StepData extends React.Component {
         this._subscription && this._subscription.remove();
         this._subcribtion = null;
     }
-
+    //<CatImage steps={this.state.pastStepCount} />
     render() {
         return (
             <View>
-              <CatImage steps={this.state.pastStepCount}/>
-              <Text>{this.state.pastStepCount}</Text>
+                <Text>{this.state.pastStepCount.toString()}</Text>
+                <Text>{this.state.batteryLevel["_W"]}</Text>
             </View >
         )
     }
