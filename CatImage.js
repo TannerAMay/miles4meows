@@ -3,7 +3,7 @@ import React from 'react';
 import { Content, Button, Text, View } from 'native-base';
 import { Surface } from 'gl-react-expo';
 import Tomb from './assets/tombstone.jpg'
-import FilteredImage from './FilteredImage';
+import MemoizedFilteredImage from './FilteredImage';
 
 const width = Dimensions.get('window').width;
 
@@ -12,14 +12,22 @@ class CatImage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      catOpacity: 1
+      catOpacity: 1,
+      blur: 10,
     };
-    console.warn('props is ', props);
   }
 
-  updateOpacity = async () => {
-    this.setState({ catOpacity: 0 })
-    // console.warn('new opacity: ', this.state.catOpacity);
+  updateOpacityBlur = async () => {
+    // this.setState({ catOpacity: 0 })
+    if(this.props.steps >= 6000)
+    {
+      this.setState({ blur: 0 });
+    }
+    else
+    {
+      this.setState({ blur: 10 - (0.001667 * this.props.steps) });
+    }
+    console.warn('steps: ', this.props.steps, ' blur: ', this.state.blur);
   };
 
   render() {
@@ -28,7 +36,7 @@ class CatImage extends React.Component {
           <ImageBackground source={ Tomb } style={styles.tombstone}>
             <View style={{opacity: this.state.catOpacity}}>
               <Surface style={styles.modifiedCat} ref={ref => (this.image = ref)}>
-                <FilteredImage blur="2"/>
+                <MemoizedFilteredImage blur={this.state.blur}/>
               </Surface>
             </View>
           </ImageBackground>
@@ -36,7 +44,7 @@ class CatImage extends React.Component {
             rounded={false}
             style={styles.button}
             block
-            onPress={this.updateOpacity}>
+            onPress={this.updateOpacityBlur}>
             <Text>Change Opacity</Text>
           </Button>
         </Content>

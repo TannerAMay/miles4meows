@@ -3912,6 +3912,11 @@ md5-file@^3.2.3:
   dependencies:
     buffer-alloc "^1.1.0"
 
+memo@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/memo/-/memo-1.0.1.tgz#58c15674ed01cfab54d0efcbb14e685dab038784"
+  integrity sha512-fm6jIx2UgihPOiQqKzi+LBl5HT0I7kLyhmDu7zZvdEbmH83lTWOjLW3ef7RoWwgxMpgEYwsyHr+S03QcnFUsfQ==
+
 merge-stream@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-1.0.1.tgz"

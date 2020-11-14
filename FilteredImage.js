@@ -72,6 +72,10 @@ class FilteredImage extends React.Component {
     };
   }
 
+  UNSAFE_componentWillReceiveProps(props) {
+    this.setState({ blur: props.blur })
+  }
+
   render() {
     return (
         <ImageFilters {...this.state} width={width} height={width}>
@@ -82,3 +86,4 @@ class FilteredImage extends React.Component {
 }
 
 export default FilteredImage;
+export const MemoizedFilteredImage = React.memo(FilteredImage);
