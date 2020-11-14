@@ -14,6 +14,7 @@ class CatImage extends React.Component {
     this.state = {
       catOpacity: 1
     };
+    console.warn('props is ', props);
   }
 
   updateOpacity = async () => {

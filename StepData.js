@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pedometer } from 'expo-sensors';
 import { Text, View } from 'react-native';
+import CatImage from './CatImage';
 
 export default class StepData extends React.Component {
 
@@ -50,7 +51,8 @@ export default class StepData extends React.Component {
             },
             error => {
                 this.setState({
-                    pastStepCount: 'Could not get stepCount: ' + error,
+                    // pastStepCount: 'Could not get stepCount: ' + error,
+                    pastStepCount: 3000,
                 });
             }
         );
@@ -64,7 +66,8 @@ export default class StepData extends React.Component {
     render() {
         return (
             <View>
-                <Text>{this.state.pastStepCount}</Text>
+              <CatImage steps={this.state.pastStepCount}/>
+              <Text>{this.state.pastStepCount}</Text>
             </View >
         )
     }
