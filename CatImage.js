@@ -6,10 +6,11 @@ import Tomb from './assets/tombstone.jpg'
 import MemoizedFilteredImage from './FilteredImage';
 
 const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 class CatImage extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       catOpacity: 1,
@@ -32,41 +33,33 @@ class CatImage extends React.Component {
 
   render() {
     return (
-        <Content style={styles.content} showsVerticalScrollIndicator={false}>
-          <ImageBackground source={ Tomb } style={styles.tombstone}>
-            <View style={{opacity: this.state.catOpacity}}>
-              <Surface style={styles.modifiedCat} ref={ref => (this.image = ref)}>
-                <MemoizedFilteredImage blur={this.state.blur}/>
-              </Surface>
-            </View>
-          </ImageBackground>
-          <Button
-            rounded={false}
-            style={styles.button}
-            block
-            onPress={this.updateOpacityBlur}>
-            <Text>Change Opacity</Text>
-          </Button>
-        </Content>
+      <Content style={styles.content} showsVerticalScrollIndicator={false}>
+        <ImageBackground source={ Tomb } resizeMode='contain' style={styles.tombstone}>
+          <View style={{opacity: this.state.catOpacity}}>
+            <Surface style={styles.modifiedCat} ref={ref => (this.image = ref)}>
+              <MemoizedFilteredImage blur={this.state.blur}/>
+            </Surface>
+          </View>
+        </ImageBackground>
+      </Content>
     );
   }
 }
 
 const styles = StyleSheet.create({
   content: { marginTop: 20, marginHorizontal: 20 },
-  button: { marginVertical: 20, borderRadius: 0 },
   tombstone: {
     flex: 1,
     justifyContent: 'center',
-    resizeMode: 'cover',
-    opacity: 0.5  // Change opacity for tombstone image
+    opacity: 0.5,  // Change opacity for tombstone image
+	width: width,
   },
   modifiedCat: {
     flex: 1,
     justifyContent: 'center',
-    resizeMode: 'cover',
-    width: width,
-    height: width,
+    resizeMode: 'contain',
+    width: width * 0.78,
+    height: height * 0.3,
   }
 });
 

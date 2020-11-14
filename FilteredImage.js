@@ -55,7 +55,7 @@ const settings = [
 
 class FilteredImage extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -78,9 +78,9 @@ class FilteredImage extends React.Component {
 
   render() {
     return (
-        <ImageFilters {...this.state} width={width} height={width}>
-        {{ uri: 'https://thiscatdoesnotexist.com' }}
-        </ImageFilters>
+      <ImageFilters {...this.state} width={width} height={width}>
+        {{ uri: 'http://192.168.0.69:5000' }}
+      </ImageFilters>
     );
   }
 }
