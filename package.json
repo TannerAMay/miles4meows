@@ -11,6 +11,7 @@
     "buffer": "^5.4.3",
     "expo": "^39.0.4",
     "expo-gl": "^9.1.1",
+    "expo-sensors": "~9.1.0",
     "expo-status-bar": "~1.0.2",
     "gl-react": "^4.0.1",
     "gl-react-expo": "^4.0.1",
