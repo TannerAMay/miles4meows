@@ -28,10 +28,13 @@ class Frames extends React.Component {
 const styles = StyleSheet.create({
   backgroundContainer: {
     position: 'absolute',
-	top: 200,
+	top: height * 0.12,
 	bottom: 0,
-	left: 100,
+	left: width * 0.05,
 	right: 0,
+	width: width,
+	height: height * 0.8,
+	resizeMode: 'contain',
   },
   overlay: {
     backgroundColor: 'rgba(255, 255, 255, 0)',

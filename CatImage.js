@@ -6,6 +6,7 @@ import Tomb from './assets/tombstone.jpg'
 import FilteredImage from './FilteredImage';
 
 const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 class CatImage extends React.Component {
 
@@ -19,26 +20,18 @@ class CatImage extends React.Component {
 
   updateOpacity = async () => {
     this.setState({ catOpacity: 0 })
-    // console.warn('new opacity: ', this.state.catOpacity);
   };
 
   render() {
     return (
       <Content style={styles.content} showsVerticalScrollIndicator={false}>
-        <ImageBackground source={Tomb} style={styles.tombstone}>
+        <ImageBackground source={Tomb} resizeMode='contain' style={styles.tombstone}>
           <View style={{ opacity: this.state.catOpacity }}>
             <Surface style={styles.modifiedCat} ref={ref => (this.image = ref)}>
-              <FilteredImage />
+              <FilteredImage/>
             </Surface>
           </View>
         </ImageBackground>
-        <Button
-          rounded={false}
-          style={styles.button}
-          block
-          onPress={this.updateOpacity}>
-          <Text>Change Opacity</Text>
-        </Button>
       </Content>
     );
   }
@@ -46,19 +39,18 @@ class CatImage extends React.Component {
 
 const styles = StyleSheet.create({
   content: { marginTop: 20, marginHorizontal: 20 },
-  button: { marginVertical: 20, borderRadius: 0 },
   tombstone: {
     flex: 1,
     justifyContent: 'center',
-    resizeMode: 'cover',
-    opacity: 0.5  // Change opacity for tombstone image
+    opacity: 0.5,  // Change opacity for tombstone image
+	width: width,
   },
   modifiedCat: {
     flex: 1,
     justifyContent: 'center',
-    resizeMode: 'cover',
-    width: width,
-    height: width,
+    resizeMode: 'contain',
+    width: width * 0.78,
+    height: height * 0.3,
   }
 });
 
