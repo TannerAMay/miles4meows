@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pedometer } from 'expo-sensors';
 import * as Battery from 'expo-battery';
-import { Text, TouchableHighlightBase, View } from 'react-native';
+import { Text, StyleSheet, TouchableHighlightBase, View } from 'react-native';
 import CatImage from './CatImage';
 
 export default class StepData extends React.Component {
@@ -74,10 +74,16 @@ export default class StepData extends React.Component {
     render() {
         return (
             <View>
-                <Text>{this.state.pastStepCount.toString()}</Text>
-                <Text>{this.state.batteryLevel["_W"]}</Text>
+                <Text style={textStyles.baseText}>{"Steps: " + this.state.pastStepCount.toString() + ' / 6000\n\n'}</Text>
+                <Text style={textStyles.baseText}>{"Health: " + this.state.batteryLevel["_W"] + ' / 1'}</Text>
             </View >
         )
     }
-
 }
+
+const textStyles = StyleSheet.create({
+	baseText: {
+		fontFamily: 'monospace',
+		fontSize: 28,
+	},
+});
