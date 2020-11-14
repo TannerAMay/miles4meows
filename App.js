@@ -6,6 +6,5 @@ import { Constants } from 'react-native-unimodules';
 import { View } from 'react-native';
 
 export default function App() {
-  return (
-    < View><StepData /></ View>);
+  return (<Frame/>);
 }
