@@ -84,6 +84,6 @@ export default class StepData extends React.Component {
 const textStyles = StyleSheet.create({
 	baseText: {
 		fontFamily: 'monospace',
-		fontSize: 28,
+		fontSize: 24,
 	},
 });
